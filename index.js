@@ -9,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("<h1>Working Fine Updated<h1>");
+  res.send("<h1>Working Fine<h1>");
 });
 
 app.use("/user", user);
