@@ -25,7 +25,7 @@ async function insertUserDetails(userData) {
   } else {
     response.status = 1;
     response.message =
-      "Account h pahele se bhai, Same email pr kitne account banayega ?";
+      "Account h pahele se bhai, Same credentials pr kitne account banayega ?";
 
     return response;
   }
