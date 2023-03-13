@@ -1,13 +1,7 @@
 const candidateDetailsCollection = require("../candidate_db_collection");
-const getCandidateData = require("../candidate_details_db_operations/get_candidate_details");
 
 async function insertCandidateDetails(candidateData) {
   let collection = await candidateDetailsCollection;
-
-  const getParticularCandidateData =
-    getCandidateData.getParticularCandidateDetail;
-
-  let userDetailsFromDb = await getParticularCandidateData(candidateData);
 
   let response = {
     status: 0,
@@ -15,20 +9,13 @@ async function insertCandidateDetails(candidateData) {
     data: candidateData,
   };
 
-  if (Object.keys(userDetailsFromDb).length === 0) {
-    let result = await collection.insertOne(userData);
+  let result = await collection.insertOne(candidateData);
 
-    if (result.acknowledged) {
-      return response;
-    } else {
-      response["status"] = 2;
-      response["message"] = "Data Save nhi hua Phir se try kro :) :)";
-      return response;
-    }
+  if (result.acknowledged) {
+    return response;
   } else {
-    response.status = 1;
-    response.message = "Candidate Already exist";
-
+    response["status"] = 2;
+    response["message"] = "Data Save nhi hua Phir se try kro :) :)";
     return response;
   }
 }

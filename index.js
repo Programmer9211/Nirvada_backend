@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const user = require("./users_api/create_user_account");
+const user = require("./apis/users_api/create_user_account");
+const candidateDetails = require("./apis/candidate_api/candidate_api");
 
 app.use(cors());
 
@@ -13,6 +14,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", user);
+
+app.use("/candidate_details", candidateDetails);
 
 app.listen(process.env.PORT || 3030, () => {
   console.log("Server is running on : http://127.0.0.1:3030");

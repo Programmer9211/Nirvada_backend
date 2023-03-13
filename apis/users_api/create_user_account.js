@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const insertUserDetails = require("../mongo_db/users_db/user_db_operations/insert_user_data");
-const getUserDetails = require("../mongo_db/users_db/user_db_operations/get_user");
+const insertUserDetails = require("../../mongo_db/users_db/user_db_operations/insert_user_data");
+const getUserDetails = require("../../mongo_db/users_db/user_db_operations/get_user");
 
 // For Login user
 
@@ -45,17 +45,17 @@ router.post("/login", async (req, res) => {
 router.post("/signup", async (req, res) => {
   let response = await insertUserDetails(req.body);
 
-//   if (response.status == 0) {
-//     let voter_id_number = req.body.voter_id_number;
-//     let mobileNumber = req.body.mobile_number;
-
-//     const userdata = {
-//       voter_id_number: voter_id_number,
-//       mobileNumber: mobileNumber,
-//     };
-//   }
-
   res.send(response);
+
+  //   if (response.status == 0) {
+  //     let voter_id_number = req.body.voter_id_number;
+  //     let mobileNumber = req.body.mobile_number;
+
+  //     const userdata = {
+  //       voter_id_number: voter_id_number,
+  //       mobileNumber: mobileNumber,
+  //     };
+  //   }
 });
 
 // For updating user Details.
