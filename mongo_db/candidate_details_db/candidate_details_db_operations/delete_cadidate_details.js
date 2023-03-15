@@ -1,6 +1,6 @@
 const candidateDetailsCollection = require("../candidate_db_collection");
 
-async function updateCandidateDetails(candidateId) {
+async function deleteCandidateDetails(candidateId) {
   let collection = await candidateDetailsCollection;
 
   let response = {
@@ -23,4 +23,4 @@ async function updateCandidateDetails(candidateId) {
   }
 }
 
-module.exports = updateCandidateDetails;
+module.exports = deleteCandidateDetails;

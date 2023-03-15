@@ -11,7 +11,7 @@ router.post("/insert", async (req, res) => {
   res.send(response);
 });
 
-router.post("/get_all_candidates", async (req, res) => {
+router.get("/get_all_candidates", async (req, res) => {
   const getAllCandidatesCollection = getCandidateDetails.getAllCandidateDetail;
 
   const getAllCandidateDetails = await getAllCandidatesCollection();
