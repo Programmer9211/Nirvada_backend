@@ -8,7 +8,7 @@ async function insertUserDetails(userData) {
 
   let response = {
     status: 0,
-    message: "Muuuuaaahhh, Bn gya account congrats...",
+    message: "Account Created Sucessfully",
     data: userData,
   };
 
@@ -19,13 +19,12 @@ async function insertUserDetails(userData) {
       return response;
     } else {
       response["status"] = 2;
-      response["message"] = "Data Save nhi hua Phir se try kro :) :)";
+      response["message"] = "Unable to save data, please try again";
       return response;
     }
   } else {
     response.status = 1;
-    response.message =
-      "Account h pahele se bhai, Same credentials pr kitne account banayega ?";
+    response.message = "Account already exist";
 
     return response;
   }
