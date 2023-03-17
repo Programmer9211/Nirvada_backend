@@ -11,10 +11,13 @@ router.post("/insert", async (req, res) => {
   res.send(response);
 });
 
-router.get("/get_all_candidates", async (req, res) => {
-  const getAllCandidatesCollection = getCandidateDetails.getAllCandidateDetail;
+router.post("/get_all_candidates", async (req, res) => {
+  const getAllCandidatesCollection =
+    getCandidateDetails.getParticularCandidateDetail;
 
-  const getAllCandidateDetails = await getAllCandidatesCollection();
+  const getAllCandidateDetails = await getAllCandidatesCollection(
+    req.body.booth
+  );
 
   res.send({
     status: 0,

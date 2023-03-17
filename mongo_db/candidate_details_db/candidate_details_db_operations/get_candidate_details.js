@@ -1,19 +1,15 @@
 const candidateDetailCollections = require("../candidate_db_collection");
 
-async function getParticularCandidateDetails(candidateId) {
+async function getParticularCandidateDetails(candidateBooth) {
   const result = await candidateDetailCollections;
-    const candidateData = await result
-        .find({ data: candidateId })
-        .toArray();
-    return candidateData;
+  const candidateData = await result.find({ booth: candidateBooth }).toArray();
+  return candidateData;
 }
 
 async function getAllCandidateDetails() {
   const result = await candidateDetailCollections;
-    const candidateData = await result
-        .find()
-        .toArray();
-    return candidateData;
+  const candidateData = await result.find().toArray();
+  return candidateData;
 }
 
 module.exports = {
