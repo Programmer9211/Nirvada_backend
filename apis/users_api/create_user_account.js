@@ -3,6 +3,7 @@ const router = express.Router();
 const insertUserDetails = require("../../mongo_db/users_db/user_db_operations/insert_user_data");
 const getUserDetails = require("../../mongo_db/users_db/user_db_operations/get_user");
 const checkIfAlreadyVoted = require("../../mongo_db/users_vote_details/users_vote_details_collection/get_details");
+const getElectionDetails = require("../../mongo_db/election_details_db/election_db_operations.js/get_election_details");
 
 // For Login user
 
