@@ -81,8 +81,6 @@ router.post("/signup", async (req, res) => {
     } else {
       const election = getElectionDetails.getElectionDetailsWithBooth;
 
-      let data = JSON.parse(JSON.stringify(result));
-
       let electionDetails = await election(result[0]["booth"]);
 
       console.log(result);
@@ -103,8 +101,6 @@ router.post("/signup", async (req, res) => {
     const result = await check.getParticularCandidateDetail(voterIdNumber);
 
     const election = getElectionDetails.getElectionDetailsWithBooth;
-
-    let data = JSON.parse(JSON.stringify(result));
 
     let electionDetails = await election(result[0]["booth"]);
 
