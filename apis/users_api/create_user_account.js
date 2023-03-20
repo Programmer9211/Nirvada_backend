@@ -82,7 +82,7 @@ router.post("/signup", async (req, res) => {
 
       let electionDetails = await election(req.body.booth);
 
-      response["election_details"] = electionDetails;
+      response.data = electionDetails;
     }
 
     res.send(response);
