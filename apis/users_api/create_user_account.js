@@ -83,11 +83,11 @@ router.post("/signup", async (req, res) => {
 
       let data = JSON.parse(JSON.stringify(result));
 
-      // let electionDetails = await election(result.);
+      let electionDetails = await election(result[0]["booth"]);
 
       console.log(result);
 
-      // response.data = electionDetails;
+      response.data = electionDetails;
     }
 
     res.send(response);
@@ -106,7 +106,7 @@ router.post("/signup", async (req, res) => {
 
     let data = JSON.parse(JSON.stringify(result));
 
-    let electionDetails = await election(result["booth"]);
+    let electionDetails = await election(result[0]["booth"]);
 
     console.log(data);
 
