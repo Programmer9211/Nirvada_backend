@@ -65,6 +65,7 @@ router.post("/signup", async (req, res) => {
       voter_id_number: voterIdNumber,
       mobileNumber: mobileNumber,
     },
+    election_details: {},
   };
   if (Object.keys(result).length === 0) {
     let response = await insertUserDetails(req.body);
@@ -76,6 +77,12 @@ router.post("/signup", async (req, res) => {
     if (result[0]["is_vote_casted"] == true) {
       response.status = 2;
       response.message = "You have already casted voted";
+    } else {
+      const election = getElectionDetails.getElectionDetailsWithBooth;
+
+      let electionDetails = await election(req.body.booth);
+
+      response["election_details"] = electionDetails;
     }
 
     res.send(response);
@@ -83,7 +90,6 @@ router.post("/signup", async (req, res) => {
     result[0]["voter_id_number"] == voterIdNumber &&
     result[0]["mobileNumber"] == mobileNumber
   ) {
-
     response.status = 1;
     response.message = "Account Already exist";
 

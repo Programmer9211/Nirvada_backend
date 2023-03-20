@@ -20,7 +20,7 @@ router.post("/get_election_time", async (req, res) => {
 
   res.send({
     "status": 0,
-    "data": response['election_starting_time'],
+    "data": response,
   });
 
 });
