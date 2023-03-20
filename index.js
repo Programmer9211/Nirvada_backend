@@ -11,13 +11,7 @@ const voteCasting = require("./apis/vote_casting_api/vote_casting_api");
 
 app.use(cors());
 
-app.use(
-  bodyParser.urlencoded({
-    // limit: "50mb",
-    // extended: true,
-    // parameterLimit: 50000,
-  })
-);
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send("<h1>Working Fine<h1>");
