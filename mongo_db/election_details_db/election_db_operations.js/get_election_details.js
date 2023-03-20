@@ -22,7 +22,7 @@ async function getElectionDetailsWithBooth(location) {
 }
 
 async function getAllElectionDetails() {
-  const result = await electionDetailsCollection;
+  const result = await userVoteDetailsCollection;
   const electionData = await result.find().toArray();
   return electionData;
 }
