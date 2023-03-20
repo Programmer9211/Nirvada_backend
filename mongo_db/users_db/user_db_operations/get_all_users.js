@@ -1,9 +1,9 @@
 const userCollection = require("../user_db_connection");
 
-function getParticularUser(voterIdNumber) {
+function getAllUserDetails() {
   return userCollection.then((result) => {
     return result
-      .find({ voter_id_number: voterIdNumber })
+      .find()
       .toArray()
       .then((userData) => {
         return userData;
@@ -11,6 +11,4 @@ function getParticularUser(voterIdNumber) {
   });
 }
 
-
-
-module.exports = getParticularUser;
+module.exports = getAllUserDetails;

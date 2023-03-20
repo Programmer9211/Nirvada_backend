@@ -4,6 +4,7 @@ const insertUserDetails = require("../../mongo_db/users_db/user_db_operations/in
 const getUserDetails = require("../../mongo_db/users_db/user_db_operations/get_user");
 const checkIfAlreadyVoted = require("../../mongo_db/users_vote_details/users_vote_details_collection/get_details");
 const getElectionDetails = require("../../mongo_db/election_details_db/election_db_operations.js/get_election_details");
+const getAllUsersDetails = require("../../mongo_db/users_db/user_db_operations/get_all_users");
 
 // For Login user
 
@@ -69,28 +70,28 @@ router.post("/signup", async (req, res) => {
   //   election_details: {},
   // };
   // if (Object.keys(result).length === 0) {
-    let response = await insertUserDetails(req.body);
+  let response = await insertUserDetails(req.body);
 
   //   const check = checkIfAlreadyVoted;
 
   //   const result = await check.getParticularCandidateDetail(voterIdNumber);
 
-    // if (Object.keys(result) === 0) {
-    //   res.send(response);
-    // } else {
-    //   if (result[0]["is_vote_casted"] == true) {
-    //     response.status = 2;
-    //     response.message = "You have already casted voted";
-    //   } else {
-    //     const election = getElectionDetails.getElectionDetailsWithBooth;
+  // if (Object.keys(result) === 0) {
+  //   res.send(response);
+  // } else {
+  //   if (result[0]["is_vote_casted"] == true) {
+  //     response.status = 2;
+  //     response.message = "You have already casted voted";
+  //   } else {
+  //     const election = getElectionDetails.getElectionDetailsWithBooth;
 
-    //     let electionDetails = await election(result[0]["booth"]);
+  //     let electionDetails = await election(result[0]["booth"]);
 
-    //     console.log(result);
+  //     console.log(result);
 
-    //     response.data = electionDetails;
-    //   }
-    // }
+  //     response.data = electionDetails;
+  //   }
+  // }
 
   //   res.send(response);
   // } else if (
@@ -104,22 +105,22 @@ router.post("/signup", async (req, res) => {
 
   //   const result = await check.getParticularCandidateDetail(voterIdNumber);
 
-    // if (Object.keys(result) === 0) {
-    //   res.send(response);
-    // } else {
-    //   if (result[0]["is_vote_casted"] == true) {
-    //     response.status = 2;
-    //     response.message = "You have already casted voted";
-    //   } else {
-    //     const election = getElectionDetails.getElectionDetailsWithBooth;
+  // if (Object.keys(result) === 0) {
+  //   res.send(response);
+  // } else {
+  //   if (result[0]["is_vote_casted"] == true) {
+  //     response.status = 2;
+  //     response.message = "You have already casted voted";
+  //   } else {
+  //     const election = getElectionDetails.getElectionDetailsWithBooth;
 
-    //     let electionDetails = await election(result[0]["booth"]);
+  //     let electionDetails = await election(result[0]["booth"]);
 
-    //     console.log(electionDetails);
+  //     console.log(electionDetails);
 
-    //     response.data = electionDetails;
-    //   }
-    // }
+  //     response.data = electionDetails;
+  //   }
+  // }
 
   //   response.election_details = result;
 
@@ -129,7 +130,7 @@ router.post("/signup", async (req, res) => {
 
   //   response.message = "Something went wrong";
 
-    res.send(response);
+  res.send(response);
   // }
 });
 
@@ -142,5 +143,11 @@ router.post("/signup", async (req, res) => {
 // });
 
 // For deleting User.
+
+router.get("/get", async (req, res) => {
+  let allUsers = await getAllUsersDetails();
+
+  res.send({ status: 0, data: allUsers });
+});
 
 module.exports = router;
