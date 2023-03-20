@@ -75,19 +75,19 @@ router.post("/signup", async (req, res) => {
 
     const result = await check.getParticularCandidateDetail(voterIdNumber);
 
-    if(Object.keys(result) === 0) {
+    if (Object.keys(result) === 0) {
       res.send(response);
-    }else {
+    } else {
       if (result[0]["is_vote_casted"] == true) {
         response.status = 2;
         response.message = "You have already casted voted";
       } else {
         const election = getElectionDetails.getElectionDetailsWithBooth;
-  
+
         let electionDetails = await election(result[0]["booth"]);
-  
+
         console.log(result);
-  
+
         response.data = electionDetails;
       }
     }
@@ -104,24 +104,24 @@ router.post("/signup", async (req, res) => {
 
     const result = await check.getParticularCandidateDetail(voterIdNumber);
 
-    if(Object.keys(result) === 0) {
+    if (Object.keys(result) === 0) {
       res.send(response);
-    }else {
+    } else {
       if (result[0]["is_vote_casted"] == true) {
         response.status = 2;
         response.message = "You have already casted voted";
       } else {
         const election = getElectionDetails.getElectionDetailsWithBooth;
-  
+
         let electionDetails = await election(result[0]["booth"]);
-  
+
         console.log(result);
-  
+
         response.data = electionDetails;
       }
     }
 
-    res.send(response);
+    
 
     res.send(response);
   } else {
