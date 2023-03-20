@@ -75,17 +75,21 @@ router.post("/signup", async (req, res) => {
 
     const result = await check.getParticularCandidateDetail(voterIdNumber);
 
-    if (result[0]["is_vote_casted"] == true) {
-      response.status = 2;
-      response.message = "You have already casted voted";
-    } else {
-      const election = getElectionDetails.getElectionDetailsWithBooth;
-
-      let electionDetails = await election(result[0]["booth"]);
-
-      console.log(result);
-
-      response.data = electionDetails;
+    if(Object.keys(result) === 0) {
+      res.send(response);
+    }else {
+      if (result[0]["is_vote_casted"] == true) {
+        response.status = 2;
+        response.message = "You have already casted voted";
+      } else {
+        const election = getElectionDetails.getElectionDetailsWithBooth;
+  
+        let electionDetails = await election(result[0]["booth"]);
+  
+        console.log(result);
+  
+        response.data = electionDetails;
+      }
     }
 
     res.send(response);
@@ -100,13 +104,24 @@ router.post("/signup", async (req, res) => {
 
     const result = await check.getParticularCandidateDetail(voterIdNumber);
 
-    const election = getElectionDetails.getElectionDetailsWithBooth;
+    if(Object.keys(result) === 0) {
+      res.send(response);
+    }else {
+      if (result[0]["is_vote_casted"] == true) {
+        response.status = 2;
+        response.message = "You have already casted voted";
+      } else {
+        const election = getElectionDetails.getElectionDetailsWithBooth;
+  
+        let electionDetails = await election(result[0]["booth"]);
+  
+        console.log(result);
+  
+        response.data = electionDetails;
+      }
+    }
 
-    let electionDetails = await election(result[0]["booth"]);
-
-    console.log(data);
-
-    response.data = electionDetails;
+    res.send(response);
 
     res.send(response);
   } else {
