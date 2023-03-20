@@ -81,9 +81,13 @@ router.post("/signup", async (req, res) => {
     } else {
       const election = getElectionDetails.getElectionDetailsWithBooth;
 
-      let electionDetails = await election(req.body.booth);
+      let data = JSON.parse(JSON.stringify(result));
 
-      response.data = electionDetails;
+      // let electionDetails = await election(result.);
+
+      console.log(result);
+
+      // response.data = electionDetails;
     }
 
     res.send(response);
@@ -93,6 +97,20 @@ router.post("/signup", async (req, res) => {
   ) {
     response.status = 1;
     response.message = "Account Already exist";
+
+    const check = checkIfAlreadyVoted;
+
+    const result = await check.getParticularCandidateDetail(voterIdNumber);
+
+    const election = getElectionDetails.getElectionDetailsWithBooth;
+
+    let data = JSON.parse(JSON.stringify(result));
+
+    let electionDetails = await election(result["booth"]);
+
+    console.log(data);
+
+    response.data = electionDetails;
 
     res.send(response);
   } else {
