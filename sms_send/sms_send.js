@@ -4,7 +4,7 @@ const client = require("twilio")(accountSid, authToken);
 const express = require("express");
 const router = express.Router();
 const crypto = require("crypto");
-const getAllUsers = require("../mongo_db/users_vote_details/users_vote_details_collection/get_details")
+const getAllUsers = require("../mongo_db/users_vote_details/users_vote_details_collection/get_details");
 
 router.post("/send", (req, res) => {
   client.messages
@@ -17,7 +17,6 @@ router.post("/send", (req, res) => {
 });
 
 router.get("/send_login_details", async (req, res) => {
-
   const userFunction = getAllUsers.getAllCandidateDetail;
 
   let users = await userFunction();
@@ -44,6 +43,37 @@ router.get("/send_login_details", async (req, res) => {
       })
       .then((message) => console.log(message));
   }
+
+  res.send({
+    status: 0,
+    message: "message send sucessfull",
+  });
+});
+
+router.get("/send_alert_message", async (req, res) => {
+  const userFunction = getAllUsers.getAllCandidateDetail;
+
+  let users = await userFunction();
+
+  const myArray = users;
+
+  var dateTime = new Date(req.body.date);
+  var result = moment(dateTime).format("MMMM Do YYYY, h:mm:ss a");
+
+  for (let i = 0; i < myArray.length; i++) {
+    await client.messages
+      .create({
+        body: "Dear Voter,\nThe Voting will start on " + result,
+        from: "+16602855240",
+        to: myArray[i]["phone_number"],
+      })
+      .then((message) => console.log(message));
+  }
+
+  res.send({
+    status: 0,
+    message: "message send sucessfull",
+  });
 });
 
 function generateRandomString(length) {
