@@ -1,14 +1,11 @@
 const userCollection = require("../user_db_connection");
 
-function getAllUserDetails() {
-  return userCollection.then((result) => {
-    return result
-      .find()
-      .toArray()
-      .then((userData) => {
-        return userData;
-      });
-  });
+async function getAllUserDetails() {
+  const result = await userCollection;
+  const userData = await result
+    .find()
+    .toArray();
+  return userData;
 }
 
 module.exports = getAllUserDetails;

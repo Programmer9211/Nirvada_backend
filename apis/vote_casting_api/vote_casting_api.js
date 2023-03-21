@@ -5,7 +5,7 @@ const votingDetails = require("../../mongo_db/users_vote_details/users_vote_deta
 
 router.post("/insert", async (req, res) => {
   const filter = { id: req.body.candidate_id };
-  const update = { $inc: { vote_count: 1 } };
+  const update = { $inc: { candidate_vote_count: 1 } };
 
   const collection = await cadidateDetails;
 
