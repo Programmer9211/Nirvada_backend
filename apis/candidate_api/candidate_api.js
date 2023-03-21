@@ -26,6 +26,18 @@ router.post("/get_all_candidates", async (req, res) => {
   });
 });
 
+router.get("/get", async (req, res) => {
+  const getAllCandidatesCollection = getCandidateDetails.getAllCandidateDetail;
+
+  const getAllCandidateDetails = await getAllCandidatesCollection();
+
+  res.send({
+    status: 0,
+    message: "Sucess",
+    data: getAllCandidateDetails,
+  });
+});
+
 router.post("/update", async (req, res) => {
   let response = await updateCandidateDetails(req.body);
 

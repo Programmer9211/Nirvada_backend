@@ -21,10 +21,12 @@ router.post("/insert", async (req, res) => {
 
   console.log(req.body.candidate_id);
 
-  const filter = { id: req.body.candidate_id };
+  const filter = { candidate_id: req.body.candidate_id };
   const update = { $set: { candidate_vote_count: voteCount } };
 
   const result = await collection.findOneAndUpdate(filter, update);
+
+  console.log(result);
 
   const updateUserVotingStatus = await votingDetails(req.body.voter_id_number);
 
