@@ -50,7 +50,7 @@ router.get("/send_login_details", async (req, res) => {
   });
 });
 
-router.get("/send_alert_message", async (req, res) => {
+router.post("/send_alert_message", async (req, res) => {
   const userFunction = getAllUsers.getAllCandidateDetail;
 
   let users = await userFunction();
