@@ -13,7 +13,12 @@ router.post("/insert", async (req, res) => {
 
   const updateUserVotingStatus = await votingDetails(req.body.voter_id_number);
 
-  res.send(updateUserVotingStatus);
+  res.send({
+    data: {
+      "update_result": result,
+      "voting_status": updateUserVotingStatus,
+    }
+  });
 });
 
 module.exports = router;
