@@ -7,7 +7,7 @@ async function getParticularCandidateDetails(candidateBooth) {
 }
 async function getParticularCandidateDetailsWithId(candidateId) {
   const result = await candidateDetailCollections;
-  const candidateData = await result.find({ id: candidateId }).toArray();
+  const candidateData = await result.find({ candidate_id: candidateId }).toArray();
   return candidateData;
 }
 
