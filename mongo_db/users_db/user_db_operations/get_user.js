@@ -11,6 +11,4 @@ function getParticularUser(voterIdNumber) {
   });
 }
 
-
-
 module.exports = getParticularUser;
